@@ -2,386 +2,480 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning Ark · mini resumen amigable</title>
-    <!-- Font Awesome 6 (free) iconos simpáticos -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>Learning Ark · arca de tesoros 🌈</title>
+    <!-- Font Awesome 6 (gratis) + emojis nativos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Fuente redonda y juguetona -->
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Comic Neue', 'Segoe UI', 'Chalkboard SE', cursive, sans-serif;
         }
 
+        /* tipografía redonda y juguetona con fallbacks tiernos */
         body {
-            background: linear-gradient(125deg, #fdeacb 0%, #f9d6a4 100%);
+            background: #fde9c9;  /* color base cálido */
+            font-family: 'Comic Neue', 'Segoe UI', 'Chalkboard SE', 'Patrick Hand', cursive, sans-serif;
+            padding: 12px 10px;
             min-height: 100vh;
-            padding: 15px 12px;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
         }
 
-        .tablero-ark {
-            max-width: 1400px;
+        .ark-container {
+            max-width: 1300px;
             width: 100%;
+            margin: 0 auto;
         }
 
-        /* ===== CABECERA COMPACTA pero llamativa ===== */
-        .cabecera-instantanea {
-            background: #ffb145;
-            border-radius: 40px 40px 30px 30px;
-            padding: 12px 25px;
-            margin-bottom: 22px;
+        /* ========== CABECERA SÚPER AMIGABLE ========= */
+        .cabecera-animal {
+            background: #ffaa4e;
+            border-radius: 70px 70px 35px 35px;
+            padding: 18px 22px;
+            margin-bottom: 25px;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
-            border: 4px solid #ffe69b;
-            box-shadow: 0 8px 0 #b16f2a, 0 5px 15px rgba(0,0,0,0.2);
+            border: 6px solid #ffd966;
+            box-shadow: 0 12px 0 #b45f2b, 0 12px 20px rgba(0,0,0,0.25);
+            position: relative;
+            background-image: repeating-linear-gradient(45deg, #ffbb6e33 0px, #ffbb6e33 15px, #ffaa4e33 15px, #ffaa4e33 30px);
         }
 
-        .logo-mini {
+        .logo-gigante {
             display: flex;
             align-items: center;
-            gap: 8px;
-        }
-        .logo-mini i {
-            font-size: 2.8rem;
-            color: #2b6e4e;
-            filter: drop-shadow(2px 3px 0 #fde17e);
-        }
-        .logo-mini h2 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #1f492f;
-            text-shadow: 3px 3px 0 #ffe27a;
-            letter-spacing: 1px;
-        }
-        .fechita {
-            background: #fcf3c3;
-            padding: 8px 22px;
-            border-radius: 50px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            border: 3px solid #976b35;
-            box-shadow: 0 4px 0 #7b4f22;
-        }
-        .fechita i {
-            margin-right: 8px;
-            color: #b63e0e;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
-        /* ===== CUADRICULA COMPACTA: 2 COLUMNAS ===== */
-        .grid-finanzas {
+        .logo-gigante i {
+            font-size: 4.2rem;
+            color: #f9f3b0;
+            filter: drop-shadow(4px 6px 0 #398a5e);
+            transition: transform 0.2s ease;
+        }
+
+        .logo-gigante i:hover {
+            transform: rotate(-5deg) scale(1.05);
+        }
+
+        .logo-gigante h1 {
+            font-size: clamp(2.2rem, 10vw, 3.8rem);
+            font-weight: 900;
+            color: #1e4d39;
+            text-shadow: 5px 5px 0 #ffe27a, 7px 7px 0 rgba(0,0,0,0.1);
+            line-height: 1.1;
+            letter-spacing: 2px;
+        }
+
+        .fecha-burbuja {
+            background: #fef1b9;
+            border-radius: 200px;
+            padding: 14px 28px;
+            font-size: clamp(1.2rem, 4vw, 1.9rem);
+            font-weight: bold;
+            border: 5px solid #b3762c;
+            box-shadow: 0 8px 0 #7b521f;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .fecha-burbuja i {
+            color: #d4530b;
+            font-size: 1.8rem;
+        }
+
+        /* ========== TARJETAS CON PERSONALIDAD ========= */
+        .grid-duo {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 22px;
             margin-bottom: 25px;
         }
 
-        /* Tarjetas redondeadas con sombra fuerte (estilo bloques) */
-        .tarjeta {
-            background: #fff9ea;
-            border-radius: 45px 45px 35px 35px;
-            padding: 15px 15px 12px 15px;
-            border: 4px solid #ffe29c;
-            box-shadow: 0 12px 0 #cba87a, 0 8px 15px rgba(0,0,0,0.15);
+        .tarjeta-alegre {
+            background: #fffcf0;
+            border-radius: 60px 60px 45px 45px;
+            padding: 22px 18px 20px 18px;
+            border: 6px solid #ffd89c;
+            box-shadow: 0 15px 0 #ba8f5e, 0 15px 20px #ad8b6280;
+            transition: 0.2s;
         }
 
-        .titulo-bloque {
-            background: #8fc9c0;
-            display: inline-block;
-            padding: 6px 25px;
-            border-radius: 40px;
-            font-size: 1.7rem;
-            font-weight: bold;
-            color: #1c423a;
-            border: 3px solid #35807a;
-            box-shadow: 0 5px 0 #26635e;
-            margin-bottom: 15px;
-        }
-        .titulo-bloque i {
-            margin-right: 12px;
-            color: #fedb70;
-            -webkit-text-stroke: 1.5px #9e701f;
+        .tarjeta-alegre:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 0 #ba8f5e, 0 18px 25px #896e49;
         }
 
-        /* tablas más compactas (menos padding, pero legibles) */
-        .tabla-compacta {
+        .titulo-jugueton {
+            background: #88cfc0;
+            border-radius: 80px;
+            padding: 10px 25px;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            font-size: clamp(1.5rem, 5vw, 2.3rem);
+            font-weight: 800;
+            border: 5px solid #389e8a;
+            box-shadow: 0 8px 0 #226b5c;
+            margin-bottom: 18px;
+            color: #14342b;
+        }
+
+        .titulo-jugueton i {
+            font-size: 2rem;
+            color: #fef56b;
+            -webkit-text-stroke: 2px #94691f;
+        }
+
+        /* ---------- TABLAS CON ESTILO DE BLOCKS ---------- */
+        .tabla-block {
             width: 100%;
             border-collapse: separate;
-            border-spacing: 0 5px;
-            font-size: 1rem;
+            border-spacing: 0 8px;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
         }
 
-        .tabla-compacta thead tr th {
-            background: #feba5c;
-            padding: 8px 5px;
-            font-size: 1.15rem;
-            color: #202f20;
-            border: 2px solid #ffda8b;
-            font-weight: 700;
+        .tabla-block thead tr th {
+            background: #feac4b;
+            padding: 12px 6px;
+            font-size: clamp(1rem, 4vw, 1.4rem);
+            color: #241f12;
+            border: 3px solid #fec36b;
+            font-weight: 800;
             text-align: center;
-        }
-        .tabla-compacta th:first-child {
-            border-radius: 20px 0 0 20px;
-        }
-        .tabla-compacta th:last-child {
-            border-radius: 0 20px 20px 0;
+            border-radius: 30px 30px 15px 15px;
         }
 
-        .tabla-compacta td {
-            background: #fff5da;
-            padding: 8px 5px;
-            border: 2px solid #fddf9e;
-            border-radius: 18px;
-            font-weight: 500;
-            color: #303d24;
-            box-shadow: 0 3px 0 #dbb172;
+        .tabla-block tbody tr td {
+            background: #fff2cf;
+            padding: 12px 6px;
+            border: 3px solid #ffca7a;
+            border-radius: 35px;
+            box-shadow: 0 5px 0 #d4a05a;
+            font-weight: 600;
+            color: #2f4025;
             vertical-align: middle;
         }
 
-        .valor-chico {
-            background: #d1ecb2;
-            font-weight: 700;
-            padding: 3px 8px;
-            border-radius: 30px;
+        .valor-burbuja {
+            background: #c4e6b4;
+            padding: 6px 15px;
+            border-radius: 60px;
             display: inline-block;
-            border: 2px solid #4a944a;
-            white-space: nowrap;
-        }
-
-        /* totales dentro de las tablas */
-        .totales-fila td {
-            background: #fdd99f;
-            font-size: 1.25rem;
+            border: 3px solid #47a347;
             font-weight: 800;
-            border: 2px solid #b47834;
+            white-space: nowrap;
+            box-shadow: 0 4px 0 #267326;
         }
 
-        /* ===== FILA FALTA COBRAR + COMPLETADOS ===== */
-        .fila-especial {
+        .totales-fila td {
+            background: #fed79c;
+            border: 4px dashed #a7671a;
+            font-size: 1.4rem;
+            font-weight: 900;
+        }
+
+        /* ========== BLOQUE FALTA COBRAR CON ICONOS ========= */
+        .seccion-pagos {
+            background: #ffe6bc;
+            border-radius: 70px;
+            padding: 25px 20px;
+            border: 6px solid #eab867;
+            box-shadow: 0 18px 0 #ac7d42, 0 12px 20px #80633d;
+            margin-bottom: 25px;
+        }
+
+        .grid-pagos {
             display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 20px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
             align-items: start;
         }
 
-        .caja-pendientes {
-            background: #feeac1;
-            border-radius: 45px;
-            padding: 15px 18px;
-            border: 4px solid #eeb669;
-            box-shadow: 0 10px 0 #b88647;
+        .pendientes-caja {
+            background: #fddfb5;
+            border-radius: 60px;
+            padding: 18px;
+            border: 5px solid #e5943c;
+            box-shadow: inset 0 -5px 0 #b36a21;
         }
 
-        .caja-pendientes .mini-titulo {
-            font-size: 1.7rem;
-            color: #2c4d2c;
-            margin-bottom: 10px;
-            background: #c2e3b6;
-            display: inline-block;
-            padding: 4px 28px;
-            border-radius: 40px;
-            border: 3px solid #549b54;
-        }
-
-        .tabla-pendientes {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0 6px;
-            font-size: 1.15rem;
-        }
-        .tabla-pendientes td {
-            background: #ffeacd;
-            padding: 8px 12px;
-            border-radius: 30px;
-            border: 2px solid #f5b95c;
-            box-shadow: 0 4px 0 #bb862b;
-        }
-        .badge-pendiente {
-            background: #f8c291;
-            border-radius: 30px;
-            padding: 3px 10px;
-            font-weight: 700;
-        }
-
-        .completados-sticker {
-            background: #c0e2b0;
-            border-radius: 45px;
-            padding: 18px 20px;
-            min-width: 250px;
-            border: 4px solid #65b065;
-            box-shadow: 0 10px 0 #468246;
-        }
-
-        .sticker-row {
+        .pendientes-caja .minititle {
+            font-size: 2rem;
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 12px;
+            background: #b2d9a8;
+            padding: 6px 25px;
+            border-radius: 50px;
+            border: 4px solid #528a52;
+            margin-bottom: 18px;
+            width: fit-content;
+        }
+
+        .lista-pendientes {
+            list-style: none;
+        }
+
+        .lista-pendientes li {
+            background: #fff0cf;
+            margin: 12px 0;
+            padding: 15px 18px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
             flex-wrap: wrap;
+            border: 4px solid #f5b658;
+            box-shadow: 0 5px 0 #b87d31;
+        }
+
+        .precio-sticker {
+            background: #f5b651;
+            border-radius: 40px;
+            padding: 5px 20px;
+            margin-left: auto;
+            font-weight: 800;
+            border: 3px solid #a7621a;
+        }
+
+        /* completados stickers */
+        .completados-caja {
+            background: #c7e6c7;
+            border-radius: 60px;
+            padding: 18px;
+            border: 6px solid #53a553;
+            box-shadow: 0 12px 0 #2e7b2e;
+        }
+
+        .sticker-pack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
             justify-content: center;
         }
 
         .completo-badge {
-            background: #fef9b0;
-            padding: 10px 22px;
-            border-radius: 40px;
-            font-size: 1.5rem;
+            background: #fffbb0;
+            border-radius: 80px;
+            padding: 15px 25px;
+            font-size: 1.7rem;
             font-weight: bold;
-            color: #2d6b2d;
-            border: 3px solid #389e38;
-            box-shadow: 0 5px 0 #1f711f;
-        }
-        .completo-badge i {
-            margin-right: 8px;
-            color: #ba3f0b;
+            color: #1d6e1d;
+            border: 5px solid #fab81e;
+            box-shadow: 0 7px 0 #c1841e, 0 7px 0 #92691f;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
-        /* Saldo veloz */
-        .barra-saldo {
-            background: #e6bf82;
-            border-radius: 60px;
-            margin: 20px 0 5px;
-            padding: 12px 25px;
+        .completo-badge i {
+            font-size: 2.2rem;
+            color: #d6460b;
+        }
+
+        /* barra saldo con oso */
+        .saldo-koala {
+            background: #c7a56b;
+            border-radius: 80px;
+            margin: 15px 0 25px;
+            padding: 18px 28px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            border: 5px solid #a5723e;
-            box-shadow: 0 7px 0 #74562d;
-        }
-        .barra-saldo span {
-            font-size: 1.9rem;
-            font-weight: 800;
-            background: #fdedb2;
-            padding: 6px 30px;
-            border-radius: 50px;
-            border: 3px solid #a65f1a;
+            gap: 15px;
+            border: 6px solid #926d36;
+            box-shadow: 0 12px 0 #6a4c25;
         }
 
-        .footer-chiquito {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 1.5rem;
-            color: #472e15;
+        .saldo-koala span:first-child {
+            font-size: clamp(1.5rem,5vw,2.2rem);
+            background: #fdebb3;
+            padding: 12px 35px;
+            border-radius: 70px;
+            border: 5px solid #a95e1c;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
-        /* responsive: se apila en pantallas chicas */
-        @media (max-width: 950px) {
-            .grid-finanzas { grid-template-columns: 1fr; }
-            .fila-especial { grid-template-columns: 1fr; }
+        .saldo-numero {
+            font-size: clamp(2rem,7vw,3rem);
+            background: #fce084;
+            padding: 10px 40px;
+            border-radius: 90px;
+            border: 6px solid #ac691d;
+            font-weight: 900;
+        }
+
+        /* footer dulce */
+        .pie-responsivo {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            background: #e6bf7b;
+            border-radius: 70px;
+            padding: 16px 25px;
+            border: 5px solid #b37b41;
+            font-size: 1.6rem;
+            margin-top: 10px;
+        }
+
+        /* 100% responsive en todos los tamaños */
+        @media (max-width: 550px) {
+            .cabecera-animal {
+                justify-content: center;
+                text-align: center;
+            }
+            .logo-gigante {
+                justify-content: center;
+            }
+            .tabla-block td, .tabla-block th {
+                font-size: 0.8rem;
+                padding: 8px 3px;
+            }
+            .valor-burbuja {
+                padding: 3px 6px;
+                font-size: 0.75rem;
+            }
+            .completo-badge {
+                font-size: 1.2rem;
+                padding: 10px 15px;
+            }
+        }
+
+        /* efecto brillante */
+        .icono-animal {
+            transition: all 0.2s;
+        }
+        .icono-animal:hover {
+            transform: scale(1.1) rotate(5deg);
         }
     </style>
 </head>
 <body>
-    <div class="tablero-ark">
-        <!-- Cabecera instantánea -->
-        <div class="cabecera-instantanea">
-            <div class="logo-mini">
-                <i class="fas fa-tree"></i>
-                <h2>Learning Ark 🌟</h2>
+    <div class="ark-container">
+        <!-- CABECERA LLENA DE VIDA -->
+        <div class="cabecera-animal">
+            <div class="logo-gigante">
+                <i class="fas fa-otter icono-animal"></i>
+                <i class="fas fa-hippo icono-animal"></i>
+                <h1>Learning Ark</h1>
+                <i class="fas fa-frog icono-animal"></i>
+                <i class="fas fa-dog icono-animal"></i>
             </div>
-            <div class="fechita">
-                <i class="far fa-clock"></i> 02/03/2026 · 23:59
+            <div class="fecha-burbuja">
+                <i class="fas fa-clock"></i> 02/03/2026
+                <i class="fas fa-moon"></i> 23:59 pm
+                <i class="fas fa-cat"></i>
             </div>
         </div>
 
-        <!-- CUERPO COMPACTO: INGRESOS Y EGRESOS lado a lado -->
-        <div class="grid-finanzas">
-            <!-- TARJETA DE INGRESOS (con todos los detalles, compacto) -->
-            <div class="tarjeta">
-                <div class="titulo-bloque"><i class="fas fa-coins"></i> INGRESOS · completo</div>
-                <table class="tabla-compacta">
-                    <thead><tr><th>Fecha</th><th>Descripción</th><th>Motivo</th><th>Alumno</th><th>Valor</th></tr></thead>
+        <!-- INGRESOS + EGRESOS JUNTOS, RESPONSIVE -->
+        <div class="grid-duo">
+            <!-- INGRESOS -->
+            <div class="tarjeta-alegre">
+                <div class="titulo-jugueton">
+                    <i class="fas fa-piggy-bank"></i> INGRESOS <i class="fas fa-seedling"></i>
+                </div>
+                <table class="tabla-block">
+                    <thead><tr><th>📅 fecha</th><th>📝 quién</th><th>🎯 motivo</th><th>👧 alumno</th><th>💰 monto</th></tr></thead>
                     <tbody>
-                        <tr><td>25/02</td><td>Adán V-Yape</td><td>1 Mens+Matr</td><td>Adán</td><td><span class="valor-chico">S/150</span></td></tr>
-                        <tr><td>26/02</td><td>Arleth a-Yape</td><td>2 Mens+Matr</td><td>Arleth</td><td><span class="valor-chico">S/250</span></td></tr>
-                        <tr><td>27/02</td><td>Evelyn A-Plin</td><td>Matrícula</td><td>Rebeca R.</td><td><span class="valor-chico">S/30</span></td></tr>
-                        <tr><td>27/02</td><td>Evelyn A-Plin</td><td>Matrícula</td><td>Emily S.</td><td><span class="valor-chico">S/30</span></td></tr>
-                        <tr><td>1/03</td><td>Evelyn A-Plin</td><td>1 Mens</td><td>Rebeca R.</td><td><span class="valor-chico">S/120</span></td></tr>
-                        <tr><td>2/03</td><td>Abigail</td><td>Materiales</td><td>Misael</td><td><span class="valor-chico">S/150</span></td></tr>
-                        <tr><td>2/03</td><td>—</td><td>2 Mens</td><td>Emily S.</td><td><span class="valor-chico">S/220</span></td></tr>
+                        <tr><td>25/02</td><td><i class="fas fa-bolt"></i> Adán V-Yape</td><td>1 Mens+Matr</td><td>Adán</td><td><span class="valor-burbuja">S/150</span></td></tr>
+                        <tr><td>26/02</td><td><i class="fas fa-bolt"></i> Arleth a-Yape</td><td>2 Mens+Matr</td><td>Arleth</td><td><span class="valor-burbuja">S/250</span></td></tr>
+                        <tr><td>27/02</td><td><i class="fas fa-leaf"></i> Evelyn A-Plin</td><td>Matrícula</td><td>Rebeca R.</td><td><span class="valor-burbuja">S/30</span></td></tr>
+                        <tr><td>27/02</td><td><i class="fas fa-leaf"></i> Evelyn A-Plin</td><td>Matrícula</td><td>Emily S.</td><td><span class="valor-burbuja">S/30</span></td></tr>
+                        <tr><td>1/03</td><td><i class="fas fa-leaf"></i> Evelyn A-Plin</td><td>1 Mens</td><td>Rebeca R.</td><td><span class="valor-burbuja">S/120</span></td></tr>
+                        <tr><td>2/03</td><td><i class="fas fa-hand-peace"></i> Abigail</td><td>Materiales</td><td>Misael</td><td><span class="valor-burbuja">S/150</span></td></tr>
+                        <tr><td>2/03</td><td><i class="fas fa-sparkles"></i> —</td><td>2 Mens</td><td>Emily S.</td><td><span class="valor-burbuja">S/220</span></td></tr>
                     </tbody>
                 </table>
-                <div style="display:flex; justify-content:flex-end; margin-top:12px;">
-                    <div style="background:#e0bb84; border-radius:30px; padding:6px 25px; font-weight:bold; font-size:1.5rem;">
-                        🧮 Total S/950
+                <div style="display:flex; justify-content:flex-end; margin-top:15px;">
+                    <div style="background:#f7cd94; border-radius:50px; padding:10px 35px; font-size:1.8rem; font-weight:800; border:5px solid #b56d2b;">
+                        <i class="fas fa-calculator"></i> Total S/950
                     </div>
                 </div>
             </div>
 
-            <!-- TARJETA DE EGRESOS (compacta) -->
-            <div class="tarjeta">
-                <div class="titulo-bloque"><i class="fas fa-cart-shopping"></i> EGRESOS · gastos</div>
-                <table class="tabla-compacta">
-                    <thead><tr><th>Fecha</th><th>Descripción</th><th>Detalle</th><th>Valor</th></tr></thead>
+            <!-- EGRESOS / GASTOS -->
+            <div class="tarjeta-alegre">
+                <div class="titulo-jugueton">
+                    <i class="fas fa-basket-shopping"></i> EGRESOS <i class="fas fa-cart-shopping"></i>
+                </div>
+                <table class="tabla-block">
+                    <thead><tr><th>📅 fecha</th><th>📦 descripción</th><th>📍 detalle</th><th>💸 valor</th></tr></thead>
                     <tbody>
-                        <tr><td>2/03</td><td>Guardapolvos</td><td>Yape Helard</td><td><span class="valor-chico">S/108</span></td></tr>
-                        <tr><td>2/03</td><td>juguetes animales</td><td>Chosica</td><td><span class="valor-chico">S/9</span></td></tr>
-                        <tr><td>3/03</td><td>Lupas 4.50 c/u</td><td>Chosica</td><td><span class="valor-chico">S/27</span></td></tr>
-                        <tr><td>4/03</td><td>vasos y sorbetes</td><td>Chosica</td><td><span class="valor-chico">S/4</span></td></tr>
-                        <tr><td>5/03</td><td>Bandejas x9</td><td>Chosica</td><td><span class="valor-chico">S/54</span></td></tr>
-                        <tr class="totales-fila"><td colspan="3" style="text-align:right; font-size:1.3rem;">🧾 TOTAL</td><td><span class="valor-chico" style="font-size:1.3rem;">S/202</span></td></tr>
+                        <tr><td>2/03</td><td>Guardapolvos</td><td><i class="fas fa-hand-holding-heart"></i> Yape Helard</td><td><span class="valor-burbuja">S/108</span></td></tr>
+                        <tr><td>2/03</td><td><i class="fas fa-dragon"></i> juguetes animales</td><td><i class="fas fa-map-pin"></i> Chosica</td><td><span class="valor-burbuja">S/9</span></td></tr>
+                        <tr><td>3/03</td><td><i class="fas fa-magnifying-glass"></i> Lupas 4.50 c/u</td><td><i class="fas fa-map-pin"></i> Chosica</td><td><span class="valor-burbuja">S/27</span></td></tr>
+                        <tr><td>4/03</td><td><i class="fas fa-cup"></i> vasos y sorbetes</td><td><i class="fas fa-map-pin"></i> Chosica</td><td><span class="valor-burbuja">S/4</span></td></tr>
+                        <tr><td>5/03</td><td><i class="fas fa-tray"></i> Bandejas x9</td><td><i class="fas fa-map-pin"></i> Chosica</td><td><span class="valor-burbuja">S/54</span></td></tr>
+                        <tr class="totales-fila"><td colspan="3" style="text-align:right;">🧾 TOTAL GASTOS</td><td><span class="valor-burbuja" style="font-size:1.5rem;">S/202</span></td></tr>
                     </tbody>
                 </table>
-                <!-- peq indicador -->
-                <div style="margin-top:8px; text-align:right; font-size:1.2rem;">🔹 5 desembolsos</div>
-            </div>
-        </div> <!-- fin grid -->
-
-        <!-- SECCIÓN FALTA COBRAR + COMPLETADOS (todo junto, compacto pero visible) -->
-        <div class="fila-especial">
-            <!-- Cuadro falta cobrar -->
-            <div class="caja-pendientes">
-                <div class="mini-titulo"><i class="fas fa-hourglass-half"></i> FALTA COBRAR</div>
-                <table class="tabla-pendientes">
-                    <tr><td>📅 1/04/2026 · 1 Mens · <b>Adán</b> <span class="badge-pendiente">S/120</span></td></tr>
-                    <tr><td>📅 1/04/2026 · 1 Mens · <b>Rebeca</b> <span class="badge-pendiente">S/120</span></td></tr>
-                    <tr><td>📅 1/04/2026 · 1 Mens · <b>Misael</b> <span class="badge-pendiente">S/120</span></td></tr>
-                </table>
-                <div style="margin-top:12px; background:#fdf0bc; border-radius:30px; padding:5px 15px; font-size:1.2rem;">
-                    ⏳ 3 alumnos · S/360 pendiente
-                </div>
-            </div>
-
-            <!-- COMPLETARON (stikers) + recordatorio compacto -->
-            <div class="completados-sticker">
-                <div style="display:flex; flex-direction:column; gap:12px;">
-                    <div class="sticker-row">
-                        <div class="completo-badge"><i class="fas fa-check-circle"></i> Emily · S/250</div>
-                        <div class="completo-badge"><i class="fas fa-check-circle"></i> Arleth · S/250</div>
-                    </div>
-                    <div style="background:#fbdea4; border-radius:30px; padding:10px; font-size:1.2rem; text-align:center; border:2px solid #a5691e;">
-                        <i class="fas fa-heart"></i> Completaron matrícula + mensualidades
-                    </div>
-                    <!-- mini aviso simpático -->
-                    <div style="background:#b3dcf5; border-radius:30px; padding:6px; font-weight:bold; border:2px solid #366e9e;">
-                        🐻 Adán, Rebeca, Misael: 1 mens pendiente
-                    </div>
+                <div style="margin-top:8px; display:flex; gap:10px; font-size:1.2rem;">
+                    <i class="fas fa-receipt"></i> <i class="fas fa-pencil"></i> 5 compras
                 </div>
             </div>
         </div>
 
-        <!-- BARRA DE SALDO (ing - egreso) y todo junto -->
-        <div class="barra-saldo">
-            <span><i class="fas fa-scale-balanced"></i> Saldo actual (ing - egresos)</span>
-            <span>S/ 748.00</span>
+        <!-- SECCIÓN FALTA COBRAR + COMPLETARON (MUCHOS ICONOS) -->
+        <div class="seccion-pagos">
+            <div class="grid-pagos">
+                <!-- FALTA COBRAR -->
+                <div class="pendientes-caja">
+                    <div class="minititle"><i class="fas fa-hourglass-clock"></i> FALTA COBRAR <i class="fas fa-clock"></i></div>
+                    <ul class="lista-pendientes">
+                        <li><i class="fas fa-calendar-alt"></i> 1/04/2026 <i class="fas fa-child"></i> Adán <span class="precio-sticker">S/120</span></li>
+                        <li><i class="fas fa-calendar-alt"></i> 1/04/2026 <i class="fas fa-child"></i> Rebeca <span class="precio-sticker">S/120</span></li>
+                        <li><i class="fas fa-calendar-alt"></i> 1/04/2026 <i class="fas fa-child"></i> Misael <span class="precio-sticker">S/120</span></li>
+                    </ul>
+                    <div style="background:#fbe593; border-radius:40px; padding:10px; font-size:1.4rem; text-align:center;">
+                        <i class="fas fa-exclamation-triangle"></i> <strong>S/360</strong> por cobrar
+                    </div>
+                </div>
+
+                <!-- COMPLETARON (EMILY Y ARLETH) + AVISOS -->
+                <div class="completados-caja">
+                    <div style="display:flex; gap:15px; flex-wrap:wrap; align-items:center; margin-bottom:20px;">
+                        <span class="completo-badge"><i class="fas fa-check-circle"></i> Emily <i class="fas fa-star"></i> S/250</span>
+                        <span class="completo-badge"><i class="fas fa-check-circle"></i> Arleth <i class="fas fa-heart"></i> S/250</span>
+                    </div>
+                    <div style="background:#fcf2bd; border-radius:50px; padding:15px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; border:4px solid #dc9e2b;">
+                        <i class="fas fa-crown fa-2x"></i>
+                        <span style="font-size:1.3rem;">Completaron matrícula + mensualidades</span>
+                    </div>
+                    <div style="margin-top:20px; background:#d6e9fd; border-radius:40px; padding:12px; border:4px solid #3e79b5; display:flex; gap:12px; flex-wrap:wrap;">
+                        <i class="fas fa-bell"></i> <span style="font-weight:bold;">Adán, Rebeca, Misael:</span> 1 mens pendiente
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- mini línea con fecha exacta y dato de corte (tal cual imagen) -->
-        <div style="display: flex; justify-content: space-between; align-items: center; background: #fbe5b9; border-radius: 40px; padding: 8px 20px; margin-top: 15px; border: 3px solid #d59448;">
-            <div><i class="fas fa-cake-candles"></i> Learning Ark/div>
-            <div style="font-weight: bold;">📋 reporte 02/03/2026 23:59 · </div>
-            <div><i class="fas fa-crown" style="color: #a15517;"></i></div>
+        <!-- BARRA SALDO (con oso y dinosaurio) -->
+        <div class="saldo-koala">
+            <span><i class="fas fa-bear"></i> <i class="fas fa-dragon"></i> Saldo actual</span>
+            <span class="saldo-numero"><i class="fas fa-coins"></i> S/748.00</span>
         </div>
-        
 
+        <!-- PIE 100% AMIGABLE -->
+        <div class="pie-responsivo">
+            <i class="fas fa-tree"></i> Learning Ark <i class="fas fa-tree"></i>
+            <span>📋 reporte fiel 02/03/2026 · 23:59</span>
+            <i class="fas fa-crow"></i> <i class="fas fa-kiwi-bird"></i>
+        </div>
     </div>
 </body>
-
 </html>
