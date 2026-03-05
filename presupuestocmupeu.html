@@ -634,14 +634,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Grupo: Módulos básicos y necesarios: 40,000 soles + IGV (con factura) -->
-                    <tr class="group-title"><td colspan="4">🔵 Módulos básicos y necesarios (operación diaria) · Inversión total: S/ 40,000 + IGV</td></tr>
+                    <!-- Grupo: Módulos básicos y necesarios -->
+                    <tr class="group-title"><td colspan="4">🔵 Módulos básicos y necesarios (operación diaria) </td></tr>
                     <tr><td>Admisión y Gestión de Citas</td><td><span class="badge-priority critical">Crítico</span></td><td class="price-tag" style="background:transparent; padding-left:0;">(incluido)</td><td><span class="time-estimate">12 días</span></td></tr>
                     <tr><td>Triaje</td><td><span class="badge-priority critical">Crítico</span></td><td class="price-tag" style="background:transparent; padding-left:0;">(incluido)</td><td><span class="time-estimate">12 días</span></td></tr>
                     <tr><td>Urgencias y Emergencias</td><td><span class="badge-priority critical">Crítico</span></td><td class="price-tag" style="background:transparent; padding-left:0;">(incluido)</td><td><span class="time-estimate">12 días</span></td></tr>
                     <tr><td><strong>Paquete de Consultas (Médica, Nutricional, Psicológica, Odontológica)</strong></td><td><span class="badge-priority high">Alta</span></td><td class="price-tag" style="background:transparent; padding-left:0;">(incluido)</td><td><span class="time-estimate">12 días</span></td></tr>
                     <tr><td><strong>Configuración y Accesos</strong></td><td><span class="badge-priority high">Alta</span></td><td class="price-tag" style="background:transparent; padding-left:0;">(incluido)</td><td><span class="time-estimate">12 días</span></td></tr>
-                    <tr style="background:#f3fbff;"><td colspan="2"><strong>Total inversión bloque básico</strong></td><td><strong>S/ 40,000 + IGV</strong></td><td><strong>2 meses (60 días)</strong></td></tr>
+                    <tr style="background:#f3fbff;"><td colspan="2"><strong>Total inversión bloque básico</strong></td><td><strong>S/ 40,000 *</strong></td><td><strong>2 meses / (60 días)</strong></td></tr>
 
                     <!-- Grupo: Módulos escalables e independientes -->
                     <tr class="group-title"><td colspan="4">📦 Módulos escalables e independientes (adquiribles según necesidad)</td></tr>
@@ -661,39 +661,46 @@
                 </tbody>
             </table>
 
-            <!-- Condiciones de pago diferenciadas -->
-            <div style="display: flex; gap: 20px; flex-wrap: wrap; margin: 25px 0;">
-                <!-- Opción con Factura -->
-                <div style="flex: 1; min-width: 280px; background: #f3fbff; border-radius: 24px; padding: 25px; border-left: 6px solid #0b3954;">
-                    <h3 style="color: #0b3954; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
-                        <span>📄</span> Pago con Factura
-                    </h3>
-                    <p style="font-size: 1.2rem; font-weight: 700; margin-bottom: 15px;">S/ 40,000 + IGV</p>
-                    <ul style="list-style: none;">
-                        <li style="margin-bottom: 10px;">✓ 50% al iniciar el proyecto (orden de compra)</li>
-                        <li style="margin-bottom: 10px;">✓ 50% con acta de conformidad al finalizar</li>
-                        <li>✓ Factura electrónica incluida</li>
-                    </ul>
+            <!-- Condiciones de pago - SOLO PARA BLOQUE BÁSICO -->
+            <div style="background: #f3fbff; border-radius: 24px; padding: 20px; margin: 25px 0;">
+                <h3 style="color: #0b3954; margin-bottom: 15px;">* 💳 Opciones de pago para el BLOQUE BÁSICO (🔵 Módulos básicos y necesarios)</h3>
+                <p style="margin-bottom: 15px; font-weight: 500;">Inversión total del bloque básico: S/ 40,000 </p>
+                
+                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 250px; background: white; padding: 20px; border-radius: 16px; border-left: 6px solid #0b3954;">
+                        <h4 style="color: #0b3954; margin-bottom: 10px;">📄 Pago con Factura</h4>
+                        <p style="font-size: 1.2rem; font-weight: 700; margin-bottom: 10px;">S/ 40,000 + IGV</p>
+                        <ul style="margin-left: 20px;">
+                            <li>50% al iniciar el proyecto (orden de servicio)</li>
+                            <li>50% con acta de conformidad al finalizar</li>
+                            <li>Factura electrónica incluida</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="flex: 1; min-width: 250px; background: white; padding: 20px; border-radius: 16px; border-left: 6px solid #ffb347;">
+                        <h4 style="color: #0b3954; margin-bottom: 10px;">📝 Pago con Recibo por Honorarios</h4>
+                        <p style="font-size: 1.2rem; font-weight: 700; margin-bottom: 10px;">S/ 40,000 (total)</p>
+                        <ul style="margin-left: 20px;">
+                            <li>50% al iniciar proyecto y/o firma de contrato de locación de servicios</li>
+                            <li>50% al finalizar la entrega del producto</li>
+                            <li>Recibos por Honorarios </li>
+                        </ul>
+                    </div>
                 </div>
                 
-                <!-- Opción con Recibo por Honorarios -->
-                <div style="flex: 1; min-width: 280px; background: #fff6e0; border-radius: 24px; padding: 25px; border-left: 6px solid #ffb347;">
-                    <h3 style="color: #0b3954; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
-                        <span>📝</span> Pago con Recibo por Honorarios
-                    </h3>
-                    <p style="font-size: 1.2rem; font-weight: 700; margin-bottom: 15px;">S/ 40,000 (total)</p>
-                    <ul style="list-style: none;">
-                        <li style="margin-bottom: 10px;">✓ 50% al iniciar proyecto y/o firma de contrato de locación de servicios</li>
-                        <li style="margin-bottom: 10px;">✓ 50% al finalizar la entrega del producto</li>
-                        <li>✓ Orden de servicio incluida</li>
-                    </ul>
-                </div>
+                <p style="margin-top: 15px; font-size: 0.95rem; color: #0b3954; font-weight: 500; background: white; padding: 10px; border-radius: 8px;">
+                    <strong>Importante:</strong> Las condiciones de pago descritas aplican exclusivamente al 🔵 Bloque Básico (S/ 40,000). 
+                    Los módulos escalables se presupuestan y facturan de forma independiente.
+                </p>
             </div>
 
-            <!-- Nota sobre módulos escalables -->
+            <!-- Módulos escalables - aclaración -->
             <div style="background: #fff6e0; border-radius: 24px; padding: 20px; margin-top: 20px;">
+                <h4 style="color: #0b3954; margin-bottom: 10px;">📦 Módulos Escalables</h4>
                 <p style="font-size: 1rem; color: #1a2e3f;">
-                    <strong>📦 Módulos escalables:</strong> Pueden ser adquiridos de forma independiente según las necesidades del proyecto, o agrupados en fases posteriores a la implementación inicial. Los precios y tiempos son referenciales por módulo.
+                    Los módulos escalables (segunda tabla) pueden ser adquiridos de forma independiente según las necesidades del proyecto, 
+                    o agregados a la propuesta inicial en cualquier momento. Los precios y tiempos son referenciales por módulo y se añadirán 
+                    al presupuesto base que se elija (Factura o Recibo por Honorarios).
                 </p>
             </div>
 
@@ -780,54 +787,62 @@
             });
         });
 
-        // Función mejorada para descargar PDF profesional
+        // Función para generar PDF ultra profesional y legible (basado en texto)
         document.getElementById('downloadPDF').addEventListener('click', function() {
             const today = new Date();
             const fecha = today.toLocaleDateString('es-PE', { year: 'numeric', month: 'long', day: 'numeric' });
             const fechaFooter = `${today.getDate()} de ${today.toLocaleDateString('es-PE', { month: 'long' })} de ${today.getFullYear()}`;
             
-            // Crear PDF con estructura profesional
+            // Crear PDF con estructura limpia y profesional - ENFOCADO EN TEXTO
             const pdfContent = document.createElement('div');
             pdfContent.style.fontFamily = 'Arial, Helvetica, sans-serif';
-            pdfContent.style.padding = '40px';
+            pdfContent.style.padding = '30px';
             pdfContent.style.maxWidth = '800px';
             pdfContent.style.margin = '0 auto';
             pdfContent.style.color = '#1e293b';
             pdfContent.style.lineHeight = '1.5';
+            pdfContent.style.fontSize = '11px';
             
             pdfContent.innerHTML = `
-                <!-- PRIMERA HOJA: MÓDULOS Y PRESUPUESTO -->
+                <!-- PRIMERA HOJA: MÓDULOS ESENCIALES Y ESCALABLES -->
                 <div style="page-break-after: always;">
-                    <div style="text-align: center; margin-bottom: 30px; border-bottom: 2px solid #ffb347; padding-bottom: 20px;">
-                        <h1 style="color: #0b3954; font-size: 28px; margin-bottom: 5px;">Historia Clínica Digital</h1>
-                        <h2 style="color: #1a4f6b; font-size: 18px; font-weight: normal;">Propuesta de desarrollo de Software · Categoría I-4</h2>
-                        <p style="color: #64748b;">Fecha: ${fecha} · Documento generado por JBDevs</p>
+                    <!-- Encabezado -->
+                    <div style="text-align: center; margin-bottom: 20px; border-bottom: 1px solid #ffb347; padding-bottom: 10px;">
+                        <h1 style="color: #0b3954; font-size: 22px; margin-bottom: 3px;">Historia Clínica Digital</h1>
+                        <h2 style="color: #1a4f6b; font-size: 14px; font-weight: normal;">Propuesta de desarrollo de Software · Categoría I-4</h2>
+                        <p style="color: #64748b; font-size: 10px;">Fecha: ${fecha} · Documento generado por JBDevs</p>
                     </div>
                     
-                    <h3 style="color: #0b3954; font-size: 18px; margin: 20px 0 10px; border-left: 4px solid #ffb347; padding-left: 10px;">1. MÓDULOS CLÍNICOS ESENCIALES (Incluidos en el paquete básico S/ 40,000 + IGV)</h3>
-                    <table style="width:100%; border-collapse: collapse; margin: 15px 0;">
+                    <!-- SECCIÓN 1: MÓDULOS BÁSICOS -->
+                    <h3 style="color: #0b3954; font-size: 14px; margin: 15px 0 8px;">1. 🔵 MÓDULOS BÁSICOS Y NECESARIOS (operación diaria)</h3>
+                    <p style="margin-bottom: 8px;"><strong>Inversión total del bloque: S/ 40,000 + IGV</strong> · Tiempo de implementación: 2 meses (12 días por módulo)</p>
+                    
+                    <table style="width:100%; border-collapse: collapse; margin: 8px 0 15px; font-size: 10px;">
                         <tr style="background: #f3f9ff;">
-                            <th style="padding: 10px; text-align: left; border: 1px solid #d0e2f2;">Módulo</th>
-                            <th style="padding: 10px; text-align: left; border: 1px solid #d0e2f2;">Descripción</th>
+                            <th style="padding: 6px; text-align: left; border: 1px solid #d0e2f2; width: 30%;">Módulo</th>
+                            <th style="padding: 6px; text-align: left; border: 1px solid #d0e2f2;">Descripción</th>
                         </tr>
-                        <tr><td style="padding: 8px; border: 1px solid #d0e2f2;"><strong>Admisión y Citas</strong></td><td style="padding: 8px; border: 1px solid #d0e2f2;">Registro pacientes, HC digital, agenda configurable</td></tr>
-                        <tr><td style="padding: 8px; border: 1px solid #d0e2f2;"><strong>Triaje</strong></td><td style="padding: 8px; border: 1px solid #d0e2f2;">Signos vitales, clasificación riesgo I-IV, alertas</td></tr>
-                        <tr><td style="padding: 8px; border: 1px solid #d0e2f2;"><strong>Urgencias y Emergencias</strong></td><td style="padding: 8px; border: 1px solid #d0e2f2;">Atención inmediata, procedimientos críticos</td></tr>
-                        <tr><td style="padding: 8px; border: 1px solid #d0e2f2;"><strong>Consulta Médica</strong></td><td style="padding: 8px; border: 1px solid #d0e2f2;">Anamnesis, CIE-10, receta electrónica, firma RENIEC</td></tr>
-                        <tr><td style="padding: 8px; border: 1px solid #d0e2f2;"><strong>Consulta Nutricional</strong></td><td style="padding: 8px; border: 1px solid #d0e2f2;">Evaluación antropométrica, plan alimentario</td></tr>
-                        <tr><td style="padding: 8px; border: 1px solid #d0e2f2;"><strong>Consulta Psicológica</strong></td><td style="padding: 8px; border: 1px solid #d0e2f2;">Test psicológicos, estado mental</td></tr>
-                        <tr><td style="padding: 8px; border: 1px solid #d0e2f2;"><strong>Consulta Odontológica</strong></td><td style="padding: 8px; border: 1px solid #d0e2f2;">Odontograma digital, procedimientos dentales</td></tr>
-                        <tr><td style="padding: 8px; border: 1px solid #d0e2f2;"><strong>Configuración y Accesos</strong></td><td style="padding: 8px; border: 1px solid #d0e2f2;">Roles, permisos, parametrización completa</td></tr>
+                        <tr><td style="padding: 5px; border: 1px solid #d0e2f2;"><strong>Admisión y Citas</strong></td><td style="padding: 5px; border: 1px solid #d0e2f2;">Registro pacientes, HC digital, agenda configurable, trazabilidad</td></tr>
+                        <tr><td style="padding: 5px; border: 1px solid #d0e2f2;"><strong>Triaje</strong></td><td style="padding: 5px; border: 1px solid #d0e2f2;">Signos vitales, clasificación riesgo I-IV, alertas de signos alarma</td></tr>
+                        <tr><td style="padding: 5px; border: 1px solid #d0e2f2;"><strong>Urgencias y Emergencias</strong></td><td style="padding: 5px; border: 1px solid #d0e2f2;">Atención inmediata, procedimientos críticos, observación y alta</td></tr>
+                        <tr><td style="padding: 5px; border: 1px solid #d0e2f2;"><strong>Consulta Médica</strong></td><td style="padding: 5px; border: 1px solid #d0e2f2;">Anamnesis, CIE-10, receta electrónica, firma RENIEC</td></tr>
+                        <tr><td style="padding: 5px; border: 1px solid #d0e2f2;"><strong>Consulta Nutricional</strong></td><td style="padding: 5px; border: 1px solid #d0e2f2;">Evaluación antropométrica, plan alimentario</td></tr>
+                        <tr><td style="padding: 5px; border: 1px solid #d0e2f2;"><strong>Consulta Psicológica</strong></td><td style="padding: 5px; border: 1px solid #d0e2f2;">Test psicológicos, estado mental</td></tr>
+                        <tr><td style="padding: 5px; border: 1px solid #d0e2f2;"><strong>Consulta Odontológica</strong></td><td style="padding: 5px; border: 1px solid #d0e2f2;">Odontograma digital, procedimientos dentales</td></tr>
+                        <tr><td style="padding: 5px; border: 1px solid #d0e2f2;"><strong>Configuración y Accesos</strong></td><td style="padding: 5px; border: 1px solid #d0e2f2;">Roles y permisos, parametrización completa del sistema</td></tr>
                     </table>
                     
-                    <h3 style="color: #0b3954; font-size: 18px; margin: 20px 0 10px; border-left: 4px solid #ffb347; padding-left: 10px;">2. MÓDULOS DE GESTIÓN (Escalables)</h3>
-                    <table style="width:100%; border-collapse: collapse; margin: 15px 0;">
+                    <!-- SECCIÓN 2: MÓDULOS ESCALABLES -->
+                    <h3 style="color: #0b3954; font-size: 14px; margin: 20px 0 8px;">2. 📦 MÓDULOS ESCALABLES (adquiribles según necesidad)</h3>
+                    <p style="margin-bottom: 8px;"><em>Estos módulos pueden ser adquiridos de forma independiente o agregados a la propuesta inicial.</em></p>
+                    
+                    <table style="width:100%; border-collapse: collapse; margin: 8px 0; font-size: 10px;">
                         <thead>
                             <tr style="background: #f3f9ff;">
-                                <th style="padding: 10px; text-align: left; border: 1px solid #d0e2f2;">Módulo</th>
-                                <th style="padding: 10px; text-align: left; border: 1px solid #d0e2f2;">Prioridad</th>
-                                <th style="padding: 10px; text-align: right; border: 1px solid #d0e2f2;">Inversión (S/)</th>
-                                <th style="padding: 10px; text-align: left; border: 1px solid #d0e2f2;">Tiempo</th>
+                                <th style="padding: 6px; text-align: left; border: 1px solid #d0e2f2;">Módulo</th>
+                                <th style="padding: 6px; text-align: left; border: 1px solid #d0e2f2;">Prioridad</th>
+                                <th style="padding: 6px; text-align: right; border: 1px solid #d0e2f2;">Inversión (S/)</th>
+                                <th style="padding: 6px; text-align: left; border: 1px solid #d0e2f2;">Tiempo</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -846,63 +861,84 @@
                             <tr><td>Limpieza y Biocontaminados</td><td>Media</td><td style="text-align: right;">S/ 3,700</td><td>15 días</td></tr>
                         </tbody>
                     </table>
+                    <p style="font-size: 9px; margin-top: 5px;"><em>Total referencia módulos escalables: S/ 58,400</em></p>
                 </div>
                 
                 <!-- SEGUNDA HOJA: RESUMEN ECONÓMICO Y CONDICIONES -->
                 <div>
-                    <h3 style="color: #0b3954; font-size: 22px; margin: 30px 0 20px; text-align: center;">💰 RESUMEN ECONÓMICO</h3>
+                    <h3 style="color: #0b3954; font-size: 18px; margin: 20px 0 15px; text-align: center;">💰 RESUMEN ECONÓMICO</h3>
                     
-                    <div style="background: #f3fbff; padding: 25px; border-radius: 15px; margin: 20px 0;">
-                        <p style="font-size: 1.2rem; margin-bottom: 10px;"><strong>Paquete básico (módulos esenciales):</strong> S/ 40,000 + IGV</p>
-                        <p style="font-size: 1.2rem; margin-bottom: 10px;"><strong>Módulos escalables (totales):</strong> S/ 58,400</p>
-                        <p style="font-size: 1.4rem; font-weight: 700; color: #0b3954; border-top: 2px solid #ffb347; padding-top: 15px; margin-top: 15px;">Inversión total completa: S/ 98,400 + IGV</p>
+                    <!-- BLOQUE BÁSICO -->
+                    <div style="background: #f3fbff; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                        <h4 style="color: #0b3954; margin-bottom: 8px;">🔵 BLOQUE BÁSICO (Módulos esenciales)</h4>
+                        <p style="font-size: 13px;"><strong>Inversión:</strong> S/ 40,000 + IGV</p>
+                        <p style="font-size: 12px;"><strong>Incluye:</strong> Admisión, Triaje, Urgencias, 4 Consultas, Configuración</p>
+                        <p style="font-size: 12px;"><strong>Tiempo:</strong> 2 meses (12 días por módulo)</p>
                     </div>
                     
-                    <div style="display: flex; gap: 20px; margin: 30px 0; flex-wrap: wrap;">
-                        <div style="flex: 1; min-width: 250px; background: #f3fbff; padding: 20px; border-radius: 15px; border-left: 6px solid #0b3954;">
-                            <h4 style="color: #0b3954; margin-bottom: 10px;">📄 Con Factura</h4>
+                    <!-- MÓDULOS ESCALABLES -->
+                    <div style="background: #fff6e0; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                        <h4 style="color: #0b3954; margin-bottom: 8px;">📦 MÓDULOS ESCALABLES</h4>
+                        <p style="font-size: 12px;"><strong>Inversión total referencial:</strong> S/ 58,400</p>
+                        <p style="font-size: 11px;">Pueden adquirirse de forma independiente o agregarse a la propuesta inicial. Los precios son por módulo.</p>
+                    </div>
+                    
+                    <!-- CONDICIONES DE PAGO - BLOQUE BÁSICO (destacado) -->
+                    <h4 style="color: #0b3954; margin: 20px 0 10px;">💳 CONDICIONES DE PAGO - BLOQUE BÁSICO</h4>
+                    <p style="font-size: 12px; font-weight: 500; margin-bottom: 10px;">Estas condiciones aplican exclusivamente al bloque básico de S/ 40,000:</p>
+                    
+                    <div style="display: flex; gap: 15px; margin: 10px 0 15px; flex-wrap: wrap;">
+                        <div style="flex: 1; min-width: 200px; background: #f3fbff; padding: 12px; border-radius: 8px; border-left: 4px solid #0b3954;">
+                            <h5 style="color: #0b3954; margin-bottom: 5px;">📄 Con Factura</h5>
                             <p><strong>S/ 40,000 + IGV</strong></p>
-                            <ul style="margin-left: 20px;">
+                            <ul style="margin-left: 15px; font-size: 10px;">
                                 <li>50% al iniciar (orden de compra)</li>
                                 <li>50% con acta de conformidad</li>
-                                <li>Factura electrónica</li>
+                                <li>Factura electrónica incluida</li>
                             </ul>
                         </div>
-                        <div style="flex: 1; min-width: 250px; background: #fff6e0; padding: 20px; border-radius: 15px; border-left: 6px solid #ffb347;">
-                            <h4 style="color: #0b3954; margin-bottom: 10px;">📝 Con Recibo por Honorarios</h4>
+                        <div style="flex: 1; min-width: 200px; background: #fff6e0; padding: 12px; border-radius: 8px; border-left: 4px solid #ffb347;">
+                            <h5 style="color: #0b3954; margin-bottom: 5px;">📝 Con Recibo por Honorarios</h5>
                             <p><strong>S/ 40,000 (total)</strong></p>
-                            <ul style="margin-left: 20px;">
+                            <ul style="margin-left: 15px; font-size: 10px;">
                                 <li>50% al iniciar (contrato locación)</li>
                                 <li>50% al finalizar entrega</li>
-                                <li>Orden de servicio</li>
+                                <li>Orden de servicio incluida</li>
                             </ul>
                         </div>
                     </div>
                     
-                    <h4 style="color: #0b3954; margin: 20px 0 10px;">⏱️ CRONOGRAMA</h4>
-                    <ul>
-                        <li><strong>Módulos básicos:</strong> 2 meses (12 días por módulo)</li>
-                        <li><strong>Módulos escalables:</strong> de 10 a 20 días según prioridad</li>
-                        <li><strong>Implementación completa:</strong> aproximadamente 6 meses</li>
+                    <p style="font-size: 11px; background: #f8fafc; padding: 8px; border-radius: 5px; margin: 10px 0;">
+                        <strong>Nota importante:</strong> Las opciones de pago descritas (Factura o Recibo por Honorarios) aplican 
+                        <strong>exclusivamente al Bloque Básico de S/ 40,000</strong>. Los módulos escalables se presupuestan y 
+                        facturan de forma independiente, pudiendo acogerse a la misma modalidad de pago si se adquieren.
+                    </p>
+                    
+                    <!-- CRONOGRAMA -->
+                    <h4 style="color: #0b3954; margin: 20px 0 8px;">⏱️ CRONOGRAMA DE IMPLEMENTACIÓN</h4>
+                    <ul style="margin-left: 20px; font-size: 11px;">
+                        <li><strong>Módulos básicos:</strong> 2 meses (5 módulos · 12 días cada uno)</li>
+                        <li><strong>Módulos escalables:</strong> de 10 a 20 días según prioridad (Alta:20d, Media:15d, Baja:10d)</li>
+                        <li><strong>Implementación completa estimada (todos los módulos):</strong> 6 meses</li>
                     </ul>
                     
-                    <!-- Footer institucional como en la imagen -->
-                    <div style="margin-top: 50px; padding-top: 20px; border-top: 2px solid #ffb347; text-align: center;">
-                        <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 15px;">
-                            <img src="https://i.postimg.cc/VNRd4Y40/Logo-JBDevs.png" style="height: 50px; width: auto;" alt="JBDevs">
-                            <span style="font-family: 'Berlin Sans FB'; font-size: 1.5rem; color: #0b3954;">JBDevs</span>
+                    <!-- Footer institucional -->
+                    <div style="margin-top: 30px; padding-top: 12px; border-top: 1px solid #ffb347; text-align: center;">
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 5px;">
+                            <img src="https://i.postimg.cc/VNRd4Y40/Logo-JBDevs.png" style="height: 25px; width: auto;" alt="JBDevs">
+                            <span style="font-family: 'Berlin Sans FB'; font-size: 1.1rem; color: #0b3954;">JBDevs</span>
                         </div>
-                        <p style="font-size: 12px; color: #64748b;">Propuesta de Historia Clínica Digital · Universidad Peruana Unión · JBDevs · Categoría I-4 · Firma RENIEC</p>
-                        <p style="font-size: 11px; color: #94a3b8;">Documento generado el ${fechaFooter}</p>
+                        <p style="font-size: 9px; color: #64748b;">Propuesta de Historia Clínica Digital · Universidad Peruana Unión · JBDevs · Categoría I-4 · Firma RENIEC</p>
+                        <p style="font-size: 8px; color: #94a3b8;">Documento generado el ${fechaFooter}</p>
                     </div>
                 </div>
             `;
             
             const opt = {
-                margin:        [0.5, 0.5, 0.5, 0.5],
+                margin:        [0.4, 0.4, 0.4, 0.4],
                 filename:     'Propuesta_HCD_JBDevs_UPeU.pdf',
                 image:        { type: 'jpeg', quality: 0.95 },
-                html2canvas:  { scale: 1.5, letterRendering: true, useCORS: true, logging: false },
+                html2canvas:  { scale: 1.4, letterRendering: true, useCORS: true, logging: false },
                 jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
             };
             
