@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Comercial – Sistema Clínico Integral</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecf2 100%);
+            color: #1e293b;
+            line-height: 1.5;
+            padding: 40px 24px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Header profesional */
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0b3954, #1f5e8e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(31, 78, 121, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(31, 78, 121, 0.2);
+            padding: 8px 20px;
+            border-radius: 100px;
+            color: #1f4e79;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+
+        /* Tarjeta resumen económico */
+        .economic-summary {
+            background: white;
+            border-radius: 24px;
+            padding: 32px;
+            margin-bottom: 48px;
+            box-shadow: 0 20px 35px -8px rgba(0, 32, 64, 0.15);
+            border: 1px solid rgba(255,255,255,0.5);
+            backdrop-filter: blur(10px);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        .core-package {
+            background: linear-gradient(135deg, #0b3954, #1a4d6b);
+            border-radius: 20px;
+            padding: 28px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .core-package::before {
+            content: "★";
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 40px;
+            opacity: 0.1;
+            color: white;
+        }
+
+        .package-title {
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.9;
+            margin-bottom: 16px;
+        }
+
+        .package-price {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .package-price small {
+            font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        .package-meta {
+            display: flex;
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+
+        .meta-item svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.8;
+        }
+
+        .complementary-summary {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .complementary-title {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modules-count {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .price-chip {
+            background: #f1f4f9;
+            border-radius: 100px;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .price-chip span {
+            color: #0b3954;
+            font-weight: 700;
+        }
+
+        .total-estimate {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 2px dashed #cbd5e1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .total-label {
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .total-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0b3954;
+        }
+
+        /* Cards de secciones */
+        .section-card {
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 28px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 30px -12px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.7);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            font-size: 2.2rem;
+            background: white;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            box-shadow: 0 8px 16px -8px rgba(0,0,0,0.1);
+        }
+
+        .section-header h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #0b3954;
+        }
+
+        .section-description {
+            color: #475569;
+            margin-bottom: 28px;
+            font-size: 1rem;
+            max-width: 80%;
+        }
+
+        /* Tablas modernas */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 20px;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background: #f8fafd;
+            color: #1e4b6e;
+            font-weight: 600;
+            padding: 18px 16px;
+            text-align: left;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid #edf2f7;
+            color: #334155;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: #f8fafc;
+        }
+
+        .price-tag {
+            font-weight: 700;
+            color: #0f3b5e;
+            background: #e6f0f9;
+            padding: 4px 12px;
+            border-radius: 100px;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        .priority-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .priority-critical {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .priority-high {
+            background: #ffedd5;
+            color: #9a3412;
+        }
+
+        .priority-medium {
+            background: #fef9c3;
+            color: #854d0e;
+        }
+
+        .priority-low {
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 24px;
+            color: #64748b;
+            border-top: 1px solid #cbd5e1;
+        }
+
+        .legal-note {
+            background: #f1f5f9;
+            border-radius: 16px;
+            padding: 16px 24px;
+            margin-top: 24px;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .economic-summary {
+                grid-template-columns: 1fr;
+            }
+            .section-description {
+                max-width: 100%;
+            }
+            .header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-badge">
+                ⚡ Propuesta Comercial · Sistema Clínico Integral
+            </div>
+            <h1>Transformación Digital <br>para tu Centro Médico</h1>
+            <p style="color: #475569; max-width: 600px; margin: 0 auto;">Plataforma unificada que optimiza flujos clínicos, administrativos y financieros</p>
+        </div>
+
+        <!-- Resumen Económico Premium -->
+        <div class="economic-summary">
+            <div class="core-package">
+                <div class="package-title">🏥 Core Operativo</div>
+                <div class="package-price">S/ 40,000 <small>+IGV</small></div>
+                <p style="opacity: 0.9; margin-bottom: 24px;">Sistema Clínico Esencial (6 módulos críticos)</p>
+                <div class="package-meta">
+                    <div class="meta-item">
+                        ⏱️ Implementación: 2 meses
+                    </div>
+                    <div class="meta-item">
+                        🚀 Puesta en marcha: inmediata
+                    </div>
+                </div>
+                <div style="margin-top: 24px; background: rgba(255,255,255,0.15); padding: 12px 16px; border-radius: 14px;">
+                    ✅ Incluye: Admisión, Triaje, Consulta Externa, Urgencias, Procedimientos, Enfermería
+                </div>
+            </div>
+            <div class="complementary-summary">
+                <div class="complementary-title">
+                    <span>📦</span> 12 Módulos Complementarios
+                </div>
+                <div class="modules-count">
+                    <div class="price-chip"><span>S/ 5,000</span> Farmacia</div>
+                    <div class="price-chip"><span>S/ 5,000</span> Laboratorio</div>
+                    <div class="price-chip"><span>S/ 5,000</span> Imágenes</div>
+                    <div class="price-chip"><span>S/ 3,200</span> Referencia</div>
+                    <div class="price-chip"><span>S/ 4,500</span> Estadística</div>
+                    <div class="price-chip"><span>S/ 5,800</span> Auditoría</div>
+                    <div class="price-chip"><span>S/ 3,900</span> Gestión Doc.</div>
+                    <div class="price-chip"><span>S/ 2,900</span> Configuración</div>
+                    <div class="price-chip"><span>S/ 8,500</span> Financiera</div>
+                    <div class="price-chip"><span>S/ 6,200</span> RR.HH.</div>
+                    <div class="price-chip"><span>S/ 4,200</span> Campaña</div>
+                    <div class="price-chip"><span>S/ 3,700</span> Limpieza</div>
+                </div>
+                <div class="total-estimate">
+                    <span class="total-label">Inversión total estimada:</span>
+                    <span class="total-value">S/ 97,900</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- MÓDULOS CLÍNICOS ESENCIALES -->
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon">🏥</div>
+                <h2>Sistema Clínico Esencial (Core Operativo)</h2>
+            </div>
+            <p class="section-description">Núcleo operativo del centro médico. Gestión integral del flujo de atención del paciente. Incluye implementación en 2 meses.</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Módulo</th>
+                            <th>Descripción Funcional</th>
+                            <th>Rol en el Flujo Clínico</th>
+                            <th>Prioridad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Admisión y Gestión de Citas</td><td>Registro de pacientes, historia clínica digital, programación de citas.</td><td>Punto de entrada del paciente</td><td><span class="priority-badge priority-critical">Crítico</span></td></tr>
+                        <tr><td>Triaje</td><td>Registro de signos vitales, clasificación de riesgo y priorización.</td><td>Evaluación inicial pre-consulta</td><td><span class="priority-badge priority-critical">Crítico</span></td></tr>
+                        <tr><td>Consulta Externa</td><td>Anamnesis, diagnóstico, tratamiento, prescripción. Incluye especialidades.</td><td>Atención médica principal</td><td><span class="priority-badge priority-critical">Crítico</span></td></tr>
+                        <tr><td>Urgencias y Emergencias</td><td>Atención inmediata, estabilización, registro de emergencia.</td><td>Manejo de casos críticos</td><td><span class="priority-badge priority-critical">Crítico</span></td></tr>
+                        <tr><td>Procedimientos</td><td>Registro de procedimientos médicos y quirúrgicos menores.</td><td>Atención especializada</td><td><span class="priority-badge priority-high">Alta</span></td></tr>
+                        <tr><td>Enfermería</td><td>Evolución de enfermería, administración de medicamentos, curas.</td><td>Cuidado continuo del paciente</td><td><span class="priority-badge priority-high">Alta</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- MÓDULOS DE GESTIÓN Y ADMINISTRACIÓN con precios -->
+        <div class="section-card">
+            <div class="section-header">
+                <div class="section-icon">📊</div>
+                <h2>Sistema de Gestión y Administración</h2>
+            </div>
+            <p class="section-description">Apoyo diagnóstico, terapéutico, administrativo y financiero. Precios modulares según funcionalidad.</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Módulo</th>
+                            <th>Descripción Funcional</th>
+                            <th>Rol</th>
+                            <th>Prioridad</th>
+                            <th>Inversión</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Farmacia</td><td>Gestión de medicamentos, stock, dispensación con receta.</td><td>Ejecución tratamiento</td><td><span class="priority-badge priority-high">Alta</span></td><td><span class="price-tag">S/ 5,000</span></td></tr>
+                        <tr><td>Laboratorio</td><td>Órdenes, procesamiento de muestras, resultados.</td><td>Soporte diagnóstico</td><td><span class="priority-badge priority-high">Alta</span></td><td><span class="price-tag">S/ 5,000</span></td></tr>
+                        <tr><td>Imágenes</td><td>Gestión de estudios radiológicos e informes.</td><td>Diagnóstico por imagen</td><td><span class="priority-badge priority-high">Alta</span></td><td><span class="price-tag">S/ 5,000</span></td></tr>
+                        <tr><td>Referencia y Contrarreferencia</td><td>Derivaciones, seguimiento y contrarreferencias.</td><td>Continuidad asistencial</td><td><span class="priority-badge priority-medium">Media</span></td><td><span class="price-tag">S/ 3,200</span></td></tr>
+                        <tr><td>Estadística y Vigilancia</td><td>Indicadores, reportes epidemiológicos.</td><td>Toma de decisiones</td><td><span class="priority-badge priority-medium">Media</span></td><td><span class="price-tag">S/ 4,500</span></td></tr>
+                        <tr><td>Auditoría y Calidad</td><td>Auditoría de registros, eventos adversos.</td><td>Mejora continua</td><td><span class="priority-badge priority-medium">Media</span></td><td><span class="price-tag">S/ 5,800</span></td></tr>
+                        <tr><td>Gestión Documental y Archivo</td><td>Digitalización y consulta de documentos.</td><td>Organización</td><td><span class="priority-badge priority-medium">Media</span></td><td><span class="price-tag">S/ 3,900</span></td></tr>
+                        <tr><td>Configuración y Accesos</td><td>Usuarios, roles, permisos, parametrización.</td><td>Seguridad</td><td><span class="priority-badge priority-high">Alta</span></td><td><span class="price-tag">S/ 2,900</span></td></tr>
+                        <tr><td>Gestión Financiera</td><td>Facturación, caja, cuentas, presupuestos.</td><td>Sostenibilidad económica</td><td><span class="priority-badge priority-high">Alta</span></td><td><span class="price-tag">S/ 8,500</span></td></tr>
+                        <tr><td>Recursos Humanos</td><td>Gestión de personal, turnos, expedientes.</td><td>Administración talento</td><td><span class="priority-badge priority-medium">Media</span></td><td><span class="price-tag">S/ 6,200</span></td></tr>
+                        <tr><td>Campaña Médica</td><td>Brigadas y campañas de salud.</td><td>Extensión comunitaria</td><td><span class="priority-badge priority-low">Baja</span></td><td><span class="price-tag">S/ 4,200</span></td></tr>
+                        <tr><td>Limpieza y Biocontaminados</td><td>Protocolos de limpieza, gestión de residuos.</td><td>Bioseguridad</td><td><span class="priority-badge priority-medium">Media</span></td><td><span class="price-tag">S/ 3,700</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Nota legal y condiciones -->
+        <div class="footer">
+            <div class="legal-note">
+                💡 Precios modulares expresados en soles (S/) incluyen licencia perpetua + implementación básica.<br>
+                *Los valores son referenciales y pueden ajustarse según necesidades específicas del cliente.
+            </div>
+            <p style="margin-top: 32px;">Documento de presentación – Propuesta Económica Sistema Clínico Integral v2.0</p>
+        </div>
+    </div>
+</body>
+</html>
