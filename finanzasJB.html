@@ -843,14 +843,14 @@ function txnRow(m){
     <div class="txn-right">
       <div class="txn-amt ${pos?'pos':'neg'}">${pos?'+':'-'}${fmtS(m.monto)}</div>
     </div>
-    <button class="txn-del" onclick="eliminar(${m.id})">✕</button>
+    <button class="txn-del" onclick="eliminar('${m.id}')">✕</button>
   </div>`;
 }
 
 function eliminar(id){
-  movs=movs.filter(m=>m.id!==id);
+  // Comparar como String para evitar fallo tipo number vs string (IDs vienen de Sheets como string)
+  movs = movs.filter(m => String(m.id) !== String(id));
   save(); renderAll(); toast('🗑️ Eliminado');
-  // GS delete ya se maneja vía syncAll en scheduleSave
 }
 
 /* ── MOVIMIENTOS ── */
@@ -877,12 +877,17 @@ function renderMovimientos(){
   [...f].sort((a,b)=>new Date(b.fecha)-new Date(a.fecha)).forEach(m=>{
     const k=m.fecha; if(!grupos[k]) grupos[k]=[];grupos[k].push(m);
   });
-  el.innerHTML=Object.entries(grupos).map(([fecha,items])=>{
-    const d=new Date(fecha+'T12:00:00');
-    const lbl=d.toLocaleDateString('es-PE',{weekday:'long',day:'numeric',month:'short'});
-    return `<div class="txn-grp-lbl">${lbl}</div>
-      <div class="card" style="padding:4px 14px;">${items.map(m=>txnRow(m)).join('')}</div>`;
-  }).join('');
+  // Ordenar grupos: más reciente primero
+  el.innerHTML=Object.entries(grupos)
+    .sort(([a],[b])=>new Date(b+'T12:00:00')-new Date(a+'T12:00:00'))
+    .map(([fecha,items])=>{
+      const d=new Date(fecha+'T12:00:00');
+      const lbl=d.toLocaleDateString('es-PE',{weekday:'long',day:'numeric',month:'short'});
+      // Dentro de cada grupo también ordenar por id desc (más reciente primero)
+      const sorted=items.sort((a,b)=>String(b.id).localeCompare(String(a.id)));
+      return `<div class="txn-grp-lbl">${lbl}</div>
+        <div class="card" style="padding:4px 14px;">${sorted.map(m=>txnRow(m)).join('')}</div>`;
+    }).join('');
 }
 
 /* ── ESTADÍSTICAS ── */
@@ -1019,7 +1024,7 @@ function renderBarProyectos(){
 
 /* ── PROYECTO utils ── */
 function calcProy(p){
-  const ms=movs.filter(m=>m.proyecto==p.id);
+  const ms=movs.filter(m=>String(m.proyecto)===String(p.id));
   const ingresos=ms.filter(m=>m.tipo_mov==='ingreso').reduce((s,m)=>s+m.monto,0);
   const gastado=ms.filter(m=>m.tipo_mov==='gasto').reduce((s,m)=>s+m.monto,0);
   const presTotal=p.presupuesto+ingresos;
@@ -1032,14 +1037,14 @@ function renderProyectos(){
   if(!proyectos.length){el.innerHTML='<div class="empty"><span class="ico">📁</span><p>Sin proyectos</p></div>';return;}
   el.innerHTML=proyectos.map(p=>{
     const {gastado,presTotal,disponible,pct,movs:ms}=calcProy(p);
-    return `<div class="proj-card" onclick="verProy(${p.id})">
+    return `<div class="proj-card" onclick=\"verProy('${p.id}')\">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;">
         <div>
           <div class="proj-name">${p.nombre}</div>
           ${p.obs?`<div class="proj-obs">${p.obs}</div>`:''}
           <div style="font-size:10px;color:var(--ink-soft);margin-top:3px;">${ms.length} movimientos · ${pct.toFixed(0)}% gastado</div>
         </div>
-        <button onclick="event.stopPropagation();editarProy(${p.id})" style="
+        <button onclick=\"event.stopPropagation();editarProy('${p.id}')\" style="
           background:var(--accent-bg);color:var(--accent);border:none;
           border-radius:8px;padding:5px 10px;font-size:11px;font-weight:800;cursor:pointer;">✏️</button>
       </div>
@@ -1061,7 +1066,7 @@ function renderProyectos(){
 function abrirModalProyecto(editId){
   const modal=document.getElementById('modalProyecto');
   if(editId){
-    const p=proyectos.find(x=>x.id===editId);
+    const p=proyectos.find(x=>String(x.id)===String(editId));
     if(!p) return;
     document.getElementById('mpNombre').value=p.nombre;
     document.getElementById('mpPres').value=p.presupuesto;
@@ -1077,7 +1082,7 @@ function abrirModalProyecto(editId){
   }
   modal.classList.add('on');
 }
-function editarProy(id){abrirModalProyecto(id);}
+function editarProy(id){abrirModalProyecto(String(id));}
 function cerrarModalProyecto(){document.getElementById('modalProyecto').classList.remove('on');}
 
 function guardarProyecto(){
@@ -1088,7 +1093,7 @@ function guardarProyecto(){
   if(!nombre){toast('⚠️ Escribe un nombre');return;}
   if(pres<0){toast('⚠️ Presupuesto inválido');return;}
   if(modal.dataset.editId){
-    const p=proyectos.find(x=>x.id==modal.dataset.editId);
+    const p=proyectos.find(x=>String(x.id)===String(modal.dataset.editId));
     if(p){p.nombre=nombre;p.presupuesto=pres;p.obs=obs;}
     toast('✅ Proyecto actualizado');
   } else {
@@ -1099,14 +1104,14 @@ function guardarProyecto(){
 }
 
 function verProy(id){
-  const p=proyectos.find(x=>x.id===id);if(!p) return;
+  const p=proyectos.find(x=>String(x.id)===String(id));if(!p) return;
   const {ingresos,gastado,presTotal,disponible,pct,movs:ms}=calcProy(p);
   const gastosList=ms.filter(m=>m.tipo_mov==='gasto');
   const ingList=ms.filter(m=>m.tipo_mov==='ingreso');
   document.getElementById('modalDetBody').innerHTML=`
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
       <div class="m-title" style="margin:0;">📁 ${p.nombre}</div>
-      <button onclick="editarProy(${p.id});document.getElementById('modalDet').classList.remove('on')" style="
+      <button onclick=\"editarProy('${p.id}');document.getElementById('modalDet').classList.remove('on')" style="
         background:var(--accent-bg);color:var(--accent);border:none;
         border-radius:8px;padding:5px 10px;font-size:11px;font-weight:800;cursor:pointer;">✏️ Editar</button>
     </div>
@@ -1235,10 +1240,11 @@ function guardar(){
   if(!monto||monto<=0){toast('⚠️ Monto inválido');return;}
   const cat=catSel||(tipoActual==='ingreso'?'sueldo':'otros');
   movs.push({
-    id:Date.now(),tipo_mov:tipoActual,monto,
+    id:String(Date.now()),  // siempre String para consistencia con Sheets
+    tipo_mov:tipoActual,monto,
     descripcion:desc||getCat(cat).name,
     categoria:cat,tipo,
-    proyecto:tipo==='proyecto'?proj:null,
+    proyecto:tipo==='proyecto'?String(proj):null,
     pago:tipoActual==='gasto'?pagoActual:null,
     fecha
   });
